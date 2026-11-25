@@ -83,8 +83,11 @@ def main():
             print("Invalid choice. Please select 1 to 3.")
 
 
-if _name_ == "_main_":
+if __name__ == "__main__":
     main()
+
+
+
 
 # Local vs global: PASSING_AVERAGE is a global variable because it is declared
 # outside all functions, so get_status() can read it. The grades variable inside
