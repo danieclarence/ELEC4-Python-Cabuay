@@ -4,10 +4,11 @@
 # Date: November 23, 2026
 
 def compute_average(grades):
-    pass
+    total = sum(grades)
+    return total / len(grades) if grades else 0
 
 def get_highest(grades):
-    pass
+    return max(grades) if grades else None      
 
 def get_lowest(grades):
-    pass
+    return min(grades) if grades else None
