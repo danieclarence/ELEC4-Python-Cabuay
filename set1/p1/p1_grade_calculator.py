@@ -46,3 +46,47 @@ def get_highest(grades):
 
 def get_lowest(grades):
     return min(grades) if grades else None
+
+def get_status(average):
+    return "PASSED" if average >= PASSING_AVERAGE else "FAILED"
+
+
+def view_results(grades):
+    if not grades:
+        print("No grades yet. Choose option 1 first.")
+        return
+    average = compute_average(grades)
+    print(f"Grades : {grades}")
+    print(f"Average: {average:.2f}")
+    print(f"Highest: {get_highest(grades)}")
+    print(f"Lowest : {get_lowest(grades)}")
+    print(f"Status : {get_status(average)}")
+
+
+def main():
+    grades = []  # local variable
+    while True:
+        print("\n=== Grade Calculator by Danica A. Cabuay ===")
+        print("1. Enter grades")
+        print("2. View results")
+        print("3. Exit")
+        choice = input("Choose: ").strip()
+
+        if choice == "1":
+            grades = input_grades()
+        elif choice == "2":
+            view_results(grades)
+        elif choice == "3":
+            print("Goodbye!")
+            break
+        else:
+            print("Invalid choice. Please select 1 to 3.")
+
+
+if _name_ == "_main_":
+    main()
+
+# Local vs global: PASSING_AVERAGE is a global variable because it is declared
+# outside all functions, so get_status() can read it. The grades variable inside
+# main() is local, so it only exists within main(). Other functions can use the
+# grades only when main() passes them as a parameter.
