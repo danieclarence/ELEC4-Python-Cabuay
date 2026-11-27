@@ -19,3 +19,44 @@ def divide_numbers():
     finally:
         # always runs
         print("Division finished.")
+
+
+def open_file():
+    file_name = input("File name: ").strip()
+    try:
+        with open(file_name, "r", encoding="utf-8") as file:
+            content = file.read()
+    except FileNotFoundError:
+        print("Error: file not found.")
+    except (OSError, UnicodeDecodeError):
+        print("Error: that file cannot be read.")
+    else:
+        print("--- File contents ---")
+        print(content)
+    finally:
+        print("File operation finished.")
+
+
+def main():
+    while True:
+        print("\n=== Safe Menu by Danica A. Cabuay ===")
+        print("1. Divide  2. Open file  3. Exit")
+        try:
+            choice = int(input("Choose: "))
+        except ValueError:
+            print("Invalid choice. Please enter 1, 2, or 3.")
+            continue
+
+        if choice == 1:
+            divide_numbers()
+        elif choice == 2:
+            open_file()
+        elif choice == 3:
+            print("Goodbye!")
+            break
+        else:
+            print("Invalid choice. Please enter 1, 2, or 3.")
+
+
+if _name_ == "_main_":
+    main()
